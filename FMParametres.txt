@@ -1,0 +1,23 @@
+#pragma once
+#include "Header.h"
+enum Players {
+	ARCHER = 1, MAGE, SWORDSMAN
+};
+class FactoryMethod {
+public:
+	static Unit * CreatePlayer(Players typePlayer)
+	{
+		switch (typePlayer)
+		{
+		case Players::ARCHER:
+			return new Archer;
+			break;
+		case Players::MAGE:
+			return new Mage;
+			break;
+		case Players::SWORDSMAN:
+			return new Swordsman;
+			break;
+		}
+	}
+};

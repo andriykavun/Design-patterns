@@ -1,0 +1,59 @@
+#pragma once
+#include <iostream>
+using namespace std;
+
+class Unit {
+public:
+	virtual void Play() = 0;
+	virtual ~Unit() {};
+};
+
+class Archer :public Unit {
+public:
+	void Play() override
+	{
+		cout << "Archer play" << endl;
+	}
+};
+class Mage :public Unit {
+public:
+	void Play() override
+	{
+		cout << "Mage play" << endl;
+	}
+};
+class Swordsman :public Unit {
+public:
+	void Play() override
+	{
+		cout << "Swordsman play" << endl;
+	}
+};
+
+class FactoryMethod
+{
+public:
+	virtual Unit*CreatePlayer() = 0;
+};
+
+class FactoryMethodArcher :public FactoryMethod {
+public:
+	Unit* CreatePlayer() override
+	{
+		return new Archer;
+	}
+};
+class FactoryMethodMage :public FactoryMethod {
+public:
+	Unit* CreatePlayer() override
+	{
+		return new Mage;
+	}
+};
+class FactoryMethodSwordsman :public FactoryMethod {
+public:
+	Unit* CreatePlayer() override
+	{
+		return new Swordsman;
+	}
+};
